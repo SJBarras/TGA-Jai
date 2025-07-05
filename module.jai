@@ -78,7 +78,7 @@ Header :: struct
     color_map_type: Color_Map_Type #align 1;
     image_type: Image_Type #align 1;
     color_map_specification: Color_Map_Specification #align 1;
-    image_specification: Image_Specification #align 1;
+    using image_specification: Image_Specification #align 1;
 }
 
 Footer :: struct
@@ -232,7 +232,7 @@ get_origin :: inline (targa: Targa) -> Image_Origin
 	return cast(Image_Origin) (targa.header.image_specification.descriptor_bitflag & 0x30) >> 4;
 }
 
-parse :: (binary: string, valid_pixel_depths: [] u8 = .{}) -> (success: bool, Targa)
+parse_full :: (binary: string, valid_pixel_depths: [] u8 = .{}) -> (success: bool, Targa)
 {
 	image: Targa;
 	image.header = cast(*Header) binary.data;
@@ -319,7 +319,7 @@ parse :: (binary: string, valid_pixel_depths: [] u8 = .{}) -> (success: bool, Ta
 	return true, image;
 }
 
-extract_pixels :: (binary: string, valid_pixel_depths: [] u8 = .{}, allocate: bool = true) -> (success: bool, [] u8, Image_Descriptor)
+parse :: (binary: string, valid_pixel_depths: [] u8 = .{}, allocate: bool = true) -> (success: bool, [] u8, Header)
 {
 	img: [] u8;
 	header := cast(*Header) binary.data;
@@ -367,5 +367,5 @@ extract_pixels :: (binary: string, valid_pixel_depths: [] u8 = .{}, allocate: bo
 	if !img_desc_result
 		return false, .{}, .{};
 
-	return true, img, img_desc;
+	return true, img, header.*;
 }
