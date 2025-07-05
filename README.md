@@ -1,6 +1,8 @@
 # TGA-Jai
 TGA parser for Jai
 
+(Missing the built in RLE capability, but it should be easy to add if you don't compress with something else)
+
 Clone / place into ```jai/modules/TGA``` and use like so:
 
 ```jai
