@@ -57,92 +57,92 @@ Alpha_Type :: enum u8 #specified
 
 Color_Map_Specification :: struct
 {
-	first_entry_index: u16		#align 1;
-	length: u16					#align 1;
-	entry_size: u8				#align 1;
+	first_entry_index: u16 #align 1;
+	length: u16	#align 1;
+	entry_size: u8 #align 1;
 }
 
 Image_Specification :: struct
 {
-	x_origin: u16			#align 1;
-	y_origin: u16			#align 1;
-	width: u16				#align 1;
-	height: u16				#align 1;
-	pixel_depth: u8			#align 1;
-	descriptor_bitflag: u8	#align 1;
+	x_origin: u16 #align 1;
+	y_origin: u16 #align 1;
+	width: u16 #align 1;
+	height: u16 #align 1;
+	pixel_depth: u8 #align 1;
+	descriptor_bitflag: u8 #align 1;
 }
 
 Header :: struct
 {
-    id_length: u8 										#align 1;
-    color_map_type: Color_Map_Type 						#align 1;
-    image_type: Image_Type 								#align 1;
-    color_map_specification: Color_Map_Specification 	#align 1;
-    image_specification: Image_Specification 			#align 1;
+    id_length: u8 #align 1;
+    color_map_type: Color_Map_Type #align 1;
+    image_type: Image_Type #align 1;
+    color_map_specification: Color_Map_Specification #align 1;
+    image_specification: Image_Specification #align 1;
 }
 
 Footer :: struct
 {
-	extension_area_offset: u32	#align 1;
-	dev_directory_offset: u32	#align 1;
-	signature: [16] u8			#align 1;
-	magic_period: u8			#align 1;
-	zero_terminator: u8			#align 1;
+	extension_area_offset: u32 #align 1;
+	dev_directory_offset: u32 #align 1;
+	signature: [16] u8 #align 1;
+	magic_period: u8 #align 1;
+	zero_terminator: u8	#align 1;
 }
 
 Dev_Directory_Entry :: struct
 {
-	tag: u16			#align 1;
-	field_offset: u32	#align 1;
-	field_size: u32		#align 1;
+	tag: u16 #align 1;
+	field_offset: u32 #align 1;
+	field_size: u32 #align 1;
 }
 
 Extension_Area :: struct
 {
-	fixed_portion_length: u16			#align 1;
-	author_name: [41] u8				#align 1;
-	author_comments: [324] u8			#align 1;
-	date_stamp: Date_Stamp				#align 1;
-	job_id: [41] u8						#align 1;
-	job_time: Job_Time					#align 1;
-	software_id: [41] u8				#align 1;
-	software_version: Software_Version	#align 1;
-	key_color: u32						#align 1;
-	pixel_aspect_ratio: [2] u16			#align 1;
-	gamma_value: [2] u16				#align 1;
-	color_correction_offset: u32		#align 1;
-	postage_stamp_offset: u32			#align 1; // aka thumbnail
-	scan_line_offset: u32				#align 1;
-	alpha_type: Alpha_Type				#align 1;
+	fixed_portion_length: u16 #align 1;
+	author_name: [41] u8 #align 1;
+	author_comments: [324] u8 #align 1;
+	date_stamp: Date_Stamp #align 1;
+	job_id: [41] u8	#align 1;
+	job_time: Job_Time #align 1;
+	software_id: [41] u8 #align 1;
+	software_version: Software_Version #align 1;
+	key_color: u32 #align 1;
+	pixel_aspect_ratio: [2] u16 #align 1;
+	gamma_value: [2] u16 #align 1;
+	color_correction_offset: u32 #align 1;
+	postage_stamp_offset: u32 #align 1; // aka thumbnail
+	scan_line_offset: u32 #align 1;
+	alpha_type: Alpha_Type #align 1;
 }
 
 Date_Stamp :: struct
 {
-	month: u16		#align 1; 	// 1 - 12
-	day: u16		#align 1; 		// 1 - 31
-	year: u16		#align 1;		// 4 digit year
-	hour: u16		#align 1;		// 0 - 23
-	minute: u16		#align 1;	// 0 - 59
-	second: u16		#align 1;	// 0 - 59
+	month: u16 #align 1; 	// 1 - 12
+	day: u16 #align 1; 		// 1 - 31
+	year: u16 #align 1;		// 4 digit year
+	hour: u16 #align 1;		// 0 - 23
+	minute: u16 #align 1;	// 0 - 59
+	second: u16 #align 1;	// 0 - 59
 }
 
 Job_Time :: struct
 {
-	hours: u16		#align 1;
-	minutes: u16	#align 1;
-	seconds: u16	#align 1;
+	hours: u16 #align 1;
+	minutes: u16 #align 1;
+	seconds: u16 #align 1;
 }
 
 Software_Version :: struct
 {
-	number: u16		#align 1;
-	letter: u8		#align 1;
+	number: u16 #align 1;
+	letter: u8 #align 1;
 }
 
 Postage_Stamp :: struct
 {
-	x_size: u8		#align 1;
-	y_size: u8		#align 1;
+	x_size: u8 #align 1;
+	y_size: u8 #align 1;
 }
 
 Targa :: struct
