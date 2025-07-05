@@ -353,8 +353,6 @@ extract_pixels :: (binary: string, valid_pixel_depths: [] u8 = .{}, allocate: bo
 
 	img.count = get_image_length(*img_spec);
 
-	img_spec.height * img_spec.width * (img_spec.pixel_depth/8);
-
 	if allocate
 	{
 		img.data = alloc(img.count);
